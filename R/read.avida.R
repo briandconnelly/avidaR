@@ -19,8 +19,10 @@ read.avida <- function(file)
 	col_info <- str_match(comments, '^\\s*#\\s*(\\d+):\\s+(.*)\\s*$')
 	col_names <- col_info[,3]
 	col_names <- col_names[!is.na(col_names)]
-	num_cols <- length(col_names)
-
+    
+    # Replace space characters and punctuation characters with underscores
+    col_names <- str_replace_all(col_names, '[^a-zA-Z0-9_.\\s]', '_')
+    
 	data <- read.table(file)
 	names(data) <- col_names
 	
