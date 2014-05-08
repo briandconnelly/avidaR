@@ -12,40 +12,8 @@ installed using
 
 ```r
 install.packages("devtools")
-```
-
-```
-## Error: trying to use CRAN without setting a mirror
-```
-
-```r
 library(devtools)
-```
-
-```
-## 
-## Attaching package: 'devtools'
-## 
-## The following objects are masked from 'package:utils':
-## 
-##     ?, help
-## 
-## The following object is masked from 'package:base':
-## 
-##     system.file
-```
-
-```r
 install_github("briandconnelly/avidaR")
-```
-
-```
-## Installing github repo avidaR/master from briandconnelly
-## Downloading master.zip from https://github.com/briandconnelly/avidaR/archive/master.zip
-```
-
-```
-## Error: client error: (404) Not Found
 ```
 
 
@@ -54,10 +22,6 @@ You'll also need the `[stringr](https://github.com/hadley/stringr)` package:
 
 ```r
 install.packages("stringr")
-```
-
-```
-## Error: trying to use CRAN without setting a mirror
 ```
 
 
@@ -70,10 +34,6 @@ You'll first need to load avidaR:
 library(avidaR)
 ```
 
-```
-## Error: there is no package called 'avidaR'
-```
-
 
 ## `read.avida`
 
@@ -84,18 +44,17 @@ file.
 
 ```r
 mydata <- read.avida("time.dat")
-```
-
-```
-## Error: could not find function "read.avida"
-```
-
-```r
 head(mydata)
 ```
 
 ```
-## Error: object 'mydata' not found
+##   update avida time average generation num_executed?
+## 1      0      0.000              0.000            30
+## 2    100      1.061              7.069           840
+## 3    200      2.170             15.583          4140
+## 4    300      3.274             23.414          9030
+## 5    400      4.362             31.595         17040
+## 6    500      5.430             39.635         27390
 ```
 
 
@@ -103,10 +62,6 @@ Files compressed with bzip2 or gzip are automatically decompressed when loaded:
 
 
 ```r
-mydata <- read.data("resource.dat.gz")
-```
-
-```
-## Error: could not find function "read.data"
+mydata <- read.avida("resource.dat.gz")
 ```
 
