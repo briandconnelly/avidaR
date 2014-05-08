@@ -22,8 +22,8 @@ representation of the data in the file
 format and returns a data table. Column names are assigned
 from comments within the data file unless the
 \code{extract.colnames} parameter is set to \code{FALSE}.
-Characters in column names that aren't letters, numbers,
-underscore, or period are replaced by underscores.
+Invalid column names will be replaced according to
+\code{\link{make.names}}.
 }
 \examples{
 data <- read.avida('resource.dat')

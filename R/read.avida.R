@@ -5,8 +5,7 @@ library(stringr)
 #' \code{read.avida} reads the given file in Avida's output format and returns a
 #' data table. Column names are assigned from comments within the data file
 #' unless the \code{extract.colnames} parameter is set to \code{FALSE}.
-#' Characters in column names that aren't letters, numbers, underscore, or
-#' period are replaced by underscores.
+#' Invalid column names will be replaced according to \code{\link{make.names}}.
 #'
 #' @export
 #' @seealso \code{\link{read.table}}
@@ -27,8 +26,8 @@ read.avida <- function(file, extract.colnames=TRUE)
 	col_names <- col_info[,3]
 	col_names <- col_names[!is.na(col_names)]
     
-    # Replace space characters and punctuation characters with underscores
-    col_names <- str_replace_all(col_names, '[^a-zA-Z0-9_.\\s]', '_')
+    # Make sure the column names are syntactically valid
+    col_names <- make.names(col_names)
     
 	data <- read.table(file)
 	
