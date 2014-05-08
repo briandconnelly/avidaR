@@ -39,8 +39,7 @@ library(avidaR)
 
 `read.avida` allows you to import Avida data files directly into R. The result
 is a data frame. Column names for the data frame are extracted from the data
-file. Characters in column names that aren't letters, numbers, underscore, or 
-period are replaced by underscores.
+file.
 
 
 ```r
@@ -58,6 +57,12 @@ head(mydata)
 ## 6    500      5.430             39.635         27390
 ```
 
+
+Invalid column names are cleaned up. In the previous example, the column names
+were *update*, *avida time*, *average generation*, and *num_executed?*.
+
+
+### Reading Compressed Files
 
 Files compressed with bzip2 or gzip are automatically decompressed when loaded:
 
