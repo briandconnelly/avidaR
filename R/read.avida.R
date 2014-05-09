@@ -18,21 +18,21 @@ library(stringr)
 #' data <- read.avida('resource.dat')
 #' 
 read.avida <- function(file, extract.colnames=TRUE)
-{
-	raw <- readLines(file)
-	comments <- grep('^\\s*#', raw, value=TRUE)
-
-	col_info <- str_match(comments, '^\\s*#\\s*(\\d+):\\s+(.*)\\s*$')
-	col_names <- col_info[,3]
-	col_names <- col_names[!is.na(col_names)]
-    
-    # Make sure the column names are syntactically valid
-    col_names <- make.names(col_names)
-    
+{    
 	data <- read.table(file)
 	
     if(extract.colnames)
     {
+        raw <- readLines(file)
+        comments <- grep('^\\s*#', raw, value=TRUE)
+        
+        col_info <- str_match(comments, '^\\s*#\\s*(\\d+):\\s+(.*)\\s*$')
+        col_names <- col_info[,3]
+        col_names <- col_names[!is.na(col_names)]
+        
+        # Make sure the column names are syntactically valid
+        col_names <- make.names(col_names)
+        
         names(data) <- col_names
     }
 	
